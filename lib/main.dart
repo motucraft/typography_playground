@@ -21,43 +21,32 @@ class Typography extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = textThemeExtension(context);
     return Scaffold(
       appBar: AppBar(title: const Text('AppTextThemeExtension')),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Title Bold 24px', style: customStyles(context).titleBold),
-                Text('Title Regular 20px',
-                    style: customStyles(context).titleRegular20),
-                Text('Title Medium 16px',
-                    style: customStyles(context).titleMedium),
-                Text('Title Regular 16px',
-                    style: customStyles(context).titleRegular16),
-                Text('Headline Bold 20px',
-                    style: customStyles(context).headlineBold),
-                Text('Headline Medium 20px',
-                    style: customStyles(context).headlineMedium),
-                Text('Body Bold 16px', style: customStyles(context).bodyBold16),
-                Text('Body Medium 16px',
-                    style: customStyles(context).bodyMedium),
-                Text('Body Regular 16px',
-                    style: customStyles(context).bodyRegular16),
-                Text('Body Bold 14px', style: customStyles(context).bodyBold14),
-                Text('Body Regular 14px',
-                    style: customStyles(context).bodyRegular14),
-                Text('Body Regular 12px',
-                    style: customStyles(context).bodyRegular12),
-                Text('Body Regular 10px',
-                    style: customStyles(context).bodyRegular10),
-                Text('Label Medium 16px',
-                    style: customStyles(context).labelMedium16),
-                Text('Label Medium 14px',
-                    style: customStyles(context).labelMedium14),
-                Text('Label Bold 12px', style: customStyles(context).labelBold),
-                Text('Label Medium 12px',
-                    style: customStyles(context).labelMedium12),
+                Text('Title Bold 24px', style: textTheme.titleBold),
+                Text('Title Regular 20px', style: textTheme.titleRegular20),
+                Text('Title Medium 16px', style: textTheme.titleMedium),
+                Text('Title Regular 16px', style: textTheme.titleRegular16),
+                Text('Headline Bold 20px', style: textTheme.headlineBold),
+                Text('Headline Medium 20px', style: textTheme.headlineMedium),
+                Text('Body Bold 16px', style: textTheme.bodyBold16),
+                Text('Body Medium 16px', style: textTheme.bodyMedium),
+                Text('Body Regular 16px', style: textTheme.bodyRegular16),
+                Text('Body Bold 14px', style: textTheme.bodyBold14),
+                Text('Body Regular 14px', style: textTheme.bodyRegular14),
+                Text('Body Regular 12px', style: textTheme.bodyRegular12),
+                Text('Body Regular 10px', style: textTheme.bodyRegular10),
+                Text('Label Medium 16px', style: textTheme.labelMedium16),
+                Text('Label Medium 14px', style: textTheme.labelMedium14),
+                Text('Label Bold 12px', style: textTheme.labelBold),
+                Text('Label Medium 12px', style: textTheme.labelMedium12),
               ].addColumnGap(8),
             ),
           ),
@@ -67,7 +56,7 @@ class Typography extends StatelessWidget {
   }
 }
 
-AppTextThemeExtension customStyles(BuildContext context) =>
+AppTextThemeExtension textThemeExtension(BuildContext context) =>
     Theme.of(context).extension<AppTextThemeExtension>()!;
 
 extension AddGap on List<Widget> {

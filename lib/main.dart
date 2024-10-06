@@ -21,7 +21,7 @@ class Typography extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = textThemeExtension(context);
+    final textTheme = context.textTheme;
     return Scaffold(
       appBar: AppBar(title: const Text('AppTextThemeExtension')),
       body: SafeArea(
@@ -56,8 +56,10 @@ class Typography extends StatelessWidget {
   }
 }
 
-AppTextThemeExtension textThemeExtension(BuildContext context) =>
-    Theme.of(context).extension<AppTextThemeExtension>()!;
+extension TextThemeExtension on BuildContext {
+  AppTextThemeExtension get textTheme =>
+      Theme.of(this).extension<AppTextThemeExtension>()!;
+}
 
 extension AddGap on List<Widget> {
   List<Widget> addColumnGap(double size) {

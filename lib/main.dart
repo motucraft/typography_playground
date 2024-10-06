@@ -1,7 +1,18 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:typography_playground/app_text_theme_extension.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('assets/fonts/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['Noto Sans Japanese'], license);
+  });
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -47,6 +58,11 @@ class Typography extends StatelessWidget {
                 Text('Label Medium 14px', style: textTheme.labelMedium14),
                 Text('Label Bold 12px', style: textTheme.labelBold),
                 Text('Label Medium 12px', style: textTheme.labelMedium12),
+                ElevatedButton(
+                    onPressed: () {
+                      showLicensePage(context: context);
+                    },
+                    child: Text('licence')),
               ].addColumnGap(8),
             ),
           ),
